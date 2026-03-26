@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresh Ventures — Recommendations</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:#2D6B3A;--green-mid:#4A8F5A;--green-light:#E8F5EC;
+    --lime:#C8E44A;--lime-light:#F0F9C8;
+    --yellow:#E8C83A;--yellow-light:#FDF6D8;
+    --red:#C84A3A;--red-light:#FAE8E6;
+    --bg:#F6F4EE;--white:#FFFFFF;--border:#E0DAD0;
+    --text:#1A2A1C;--text-mid:#4A5C4D;--text-muted:#8A9B8D;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;}
+
+  /* NAV */
+  .top-nav{background:var(--white);border-bottom:2px solid var(--green);padding:0 40px;display:flex;align-items:center;position:sticky;top:0;z-index:100;gap:0;}
+  .top-nav-logo{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--green);text-decoration:none;padding:16px 20px 16px 0;border-right:1px solid var(--border);margin-right:4px;white-space:nowrap;}
+  .top-nav-logo em{font-style:italic;font-weight:400;}
+  .nav-link{font-size:12px;color:var(--text-muted);text-decoration:none;padding:18px 12px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;}
+  .nav-link:hover{color:var(--green);border-bottom-color:var(--lime);}
+  .nav-link.active{color:var(--green);font-weight:500;border-bottom-color:var(--lime);}
+  .nav-back{margin-left:auto;font-size:12px;color:var(--text-muted);text-decoration:none;padding:18px 0;}
+  .nav-back:hover{color:var(--green);}
+
+  /* PAGE */
+  .page{max-width:1100px;margin:0 auto;padding:48px 40px 80px;}
+
+  .section-label{display:flex;align-items:center;gap:10px;margin-bottom:24px;margin-top:48px;}
+  .section-label:first-of-type{margin-top:0;}
+  .s-dot{width:8px;height:8px;background:var(--lime);border-radius:50%;flex-shrink:0;}
+  .s-title{font-family:'Lora',serif;font-size:22px;font-weight:600;color:var(--green);}
+  .s-sub{font-size:12px;color:var(--text-muted);margin-left:auto;}
+
+  /* SUMMARY BANNER */
+  .summary-banner{background:var(--green);border-radius:14px;padding:28px 32px;margin-bottom:40px;}
+  .summary-banner h2{font-family:'Lora',serif;font-size:20px;font-weight:600;color:var(--white);margin-bottom:10px;}
+  .summary-banner p{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.8;max-width:700px;}
+
+  /* REC CARD */
+  .rec-grid{display:flex;flex-direction:column;gap:16px;}
+
+  .rec-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 28px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;transition:border-color .2s,transform .2s;}
+  .rec-card:hover{border-color:var(--green-mid);transform:translateX(4px);}
+
+  .rec-priority{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+
+  .rec-content h3{font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--green);margin-bottom:6px;}
+  .rec-content p{font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:10px;}
+  .rec-source{font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:6px;}
+  .rec-source-dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;}
+
+  .rec-impact{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-left:8px;}
+  .impact-high{background:var(--green-light);color:var(--green);}
+  .impact-med{background:var(--yellow-light);color:#8A6800;}
+  .impact-low{background:#F0EDE8;color:var(--text-muted);}
+
+  /* FOOTER */
+  .footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);}
+  .footer strong{color:var(--text);font-weight:500;}
+
+  @media(max-width:640px){body{padding:0;}.page{padding:24px 20px 60px;}.top-nav{padding:0 20px;}}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="top-nav-logo">Fresh <em>Ventures</em></a>
+  <a href="pipeline.html" class="nav-link">Pipeline</a>
+  <a href="outreach.html" class="nav-link">Outreach</a>
+  <a href="profiles.html" class="nav-link">Profiles</a>
+  <a href="time-to-hire.html" class="nav-link">Time to Hire</a>
+  <a href="ai.html" class="nav-link">AI Component</a>
+  <a href="process.html" class="nav-link">Process</a>
+  <a href="recommendations.html" class="nav-link active">Recommendations</a>
+  <a href="index.html" class="nav-back">← Overview</a>
+</nav>
+
+<div class="page">
+
+  <!-- Summary -->
+  <div class="summary-banner">
+    <h2>Key Recommendations — 2026 Cohort</h2>
+    <p>Based on full analysis of the 2025–2026 Co-founder Venture Building Program: outreach data (20,732 leads), 50+ CV profiles, ClickUp pipeline data, and the end-to-end AI/automation flow. These recommendations are prioritised by expected impact on the next cohort.</p>
+  </div>
+
+  <!-- Section 1: Funnel & Application -->
+  <div class="section-label">
+    <div class="s-dot"></div>
+    <div class="s-title">Funnel & Application</div>
+    <div class="s-sub">Biggest drop-off opportunities</div>
+  </div>
+
+  <div class="rec-grid">
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:var(--red-light);">🚨</div>
+      <div class="rec-content">
+        <h3>Add a lightweight pre-screen before Typeform + Hireflix <span class="rec-impact impact-high">High impact</span></h3>
+        <p>The application form is the single biggest drop-off point: 26% of applicants who started never finished, and 18 strong outbound profiles (including a FallingWalls 2020 winner and a PhD plant biologist with 20+ years agronomy experience) stalled here. Typeform + Hireflix together is a heavy ask for a cold-to-warm lead. A 3-question pre-screen — mission alignment, founding motivation, availability — before the full flow would reduce friction and recover 2–4 strong candidates per cohort.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: Outbound profile analysis · 18 stalled at application stage · 10/18 had founding experience</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:var(--red-light);">📋</div>
+      <div class="rec-content">
+        <h3>Run exit surveys for dropouts <span class="rec-impact impact-high">High impact</span></h3>
+        <p>7 of 20 dropouts gave no reason at all. A simple automated trigger at the point of status change ("Dropped out") — a 2-question survey via n8n — would surface patterns over time. The current data shows misunderstanding of the program (co-founding vs hiring) as a recurring theme: Katerina Joannides explicitly thought Fresh was hiring, not co-founding. Clearer messaging earlier in the funnel could prevent this.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: ClickUp comment analysis · 20 dropouts · 7 no reason given</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:var(--yellow-light);">📝</div>
+      <div class="rec-content">
+        <h3>Clarify "co-founding" vs "hiring" in early messaging <span class="rec-impact impact-med">Medium impact</span></h3>
+        <p>Multiple candidates dropped citing misaligned expectations — they thought they were applying for a job, not committing to a co-founding journey. Adding one clear line to the outreach sequence and the application form header ("You'll enter as an individual and potentially leave as a co-founder of a new venture") would filter this earlier and save review time.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: Drop reason analysis · "Thought we were hiring a co-founder" — Katerina Joannides</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Section 2: Outreach -->
+  <div class="section-label">
+    <div class="s-dot"></div>
+    <div class="s-title">Outreach Strategy</div>
+    <div class="s-sub">Targeting & campaign optimisation</div>
+  </div>
+
+  <div class="rec-grid">
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:var(--green-light);">📡</div>
+      <div class="rec-content">
+        <h3>Double down on warm retargeting campaigns <span class="rec-impact impact-high">High impact</span></h3>
+        <p>The "LI reactors & event attendees" campaign (people who already engaged with Fresh content) produced 3 of the 5 confirmed outreach hires and by far the highest reply volume (2,978). Cold outreach campaigns like "Innovation in Farming and Food" (12,558 leads, primarily corporate Product Managers) showed far weaker conversion. For the next cohort: allocate more budget to warm audiences — event attendees, LinkedIn post reactors, alumni networks — and reduce cold volume.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: Campaign analysis · LI reactors = 3 hires · Innovation campaign = 0 confirmed hires</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:var(--green-light);">🎯</div>
+      <div class="rec-content">
+        <h3>Sharpen targeting criteria: prioritise food/ag + founding experience <span class="rec-impact impact-high">High impact</span></h3>
+        <p>CV analysis of all 50 outbound applicants shows a clear pattern: candidates who converted had food/ag background + senior experience + founding signals in their profile. The "Innovation" campaign targeted corporate Product Managers and R&D Managers — strong on tech but weak on food system connection and entrepreneurial drive. Boolean searches and Clay enrichment should add "founder", "co-founder", "startup" as positive signals and deprioritise pure corporate titles.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: Outbound profile analysis · 72% Masters+ · food score avg 2.9 in application stage vs 1.6 in med/low potential</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:var(--yellow-light);">🌍</div>
+      <div class="rec-content">
+        <h3>Expand sourcing into underrepresented regions <span class="rec-impact impact-med">Medium impact</span></h3>
+        <p>Current outreach is heavily Western Europe focused — NL + UK alone account for ~13% of all outreach. High-potential markets that are underrepresented: Nordics (Norway, Finland), CEE (Czech Republic, Romania), and LATAM (Brazil, Mexico). These regions have strong agri-food innovation ecosystems and could diversify the co-founder pool meaningfully for future cohorts.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: Geography analysis · 18 identified countries · NL + UK = 2,103 of 15,803 outbound leads</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Section 3: AI & Automation -->
+  <div class="section-label">
+    <div class="s-dot"></div>
+    <div class="s-title">AI & Automation</div>
+    <div class="s-sub">Flow optimisation for next cohort</div>
+  </div>
+
+  <div class="rec-grid">
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:var(--yellow-light);">🤖</div>
+      <div class="rec-content">
+        <h3>Add human touchpoint for top 10–15% of outbound leads <span class="rec-impact impact-high">High impact</span></h3>
+        <p>The AI follow-up sequence works well at volume but fails at the individual level for high-potential profiles. Humberto Martinez (FallingWalls winner, AgTech CEO) and Noël Magnin (PhD, Ecorobotix) both dropped at the application form — a short personal message from Huub or Bart at the right moment could have converted either of them. Recommendation: flag the top 10–15% of positive replies for a manual personalised follow-up before the application CTA.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: AI component analysis · Outbound profile analysis · Humberto Martinez, Noël Magnin</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:var(--yellow-light);">🔍</div>
+      <div class="rec-content">
+        <h3>Review "Unknown" and "Polite Decline" reply buckets manually <span class="rec-impact impact-med">Medium impact</span></h3>
+        <p>472 replies were categorised as "Unknown/Unclear" and 396 as "Polite Decline" — together nearly 900 conversations that may contain hidden positives misrouted by the AI. A one-time manual review of these buckets, or a re-run through a refined categorisation prompt, could surface 20–50 candidates worth re-engaging for the next cohort.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: HeyReach reply analysis · 5,684 total replies · 472 unknown + 396 polite decline</div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:#F0EDE8);">⚙️</div>
+      <div class="rec-content">
+        <h3>Implement cross-mission deduplication <span class="rec-impact impact-low">Low impact</span></h3>
+        <p>Currently there is no cross-mission deduplication — leads may receive multiple outreach sequences from different senders (e.g. Huub and Bart both approaching the same person for different missions). While this was a deliberate choice, it risks alienating high-value prospects. A simple dedup check in Clay before syncing to HeyReach would prevent this for the highest-priority leads.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: Process documentation · No cross-mission dedup currently active</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Section 4: Offer stage -->
+  <div class="section-label">
+    <div class="s-dot"></div>
+    <div class="s-title">Late Stage & Offer</div>
+    <div class="s-sub">Converting offers to hires</div>
+  </div>
+
+  <div class="rec-grid">
+
+    <div class="rec-card">
+      <div class="rec-priority" style="background:var(--green-light);">🤝</div>
+      <div class="rec-content">
+        <h3>Conduct structured exit conversations with offer declines <span class="rec-impact impact-med">Medium impact</span></h3>
+        <p>9 candidates declined after receiving an offer — a 31% offer decline rate. Notably, offer-declined candidates had stronger founding experience (67%) than the hires themselves (40%), suggesting these were high-quality profiles lost for non-profile reasons. A short structured call at the point of decline ("What would have made this a yes?") would build a feedback loop for improving the offer stage. Key themes to probe: program intensity, financial support, co-founder matching confidence.</p>
+        <div class="rec-source"><div class="rec-source-dot"></div>Source: Pipeline analysis · 9 offer declines · offer-declined founding exp 67% vs hired 40%</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div>Prepared by <strong>Wouter Jaarsma</strong> · Does Recruitment OÜ · March 2026</div>
+    <div><a href="https://freshventures.eu" target="_blank" style="color:var(--green-mid);text-decoration:none;">freshventures.eu</a></div>
+  </div>
+
+</div>
+</body>
+</html>
