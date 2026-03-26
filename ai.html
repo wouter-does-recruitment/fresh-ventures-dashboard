@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresh Ventures — AI Component</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --green:       #2D6B3A;
+  --green-mid:   #4A8F5A;
+  --green-light: #E8F5EC;
+  --lime:        #C8E44A;
+  --lime-light:  #F0F9C8;
+  --yellow:      #E8C83A;
+  --yellow-light:#FDF6D8;
+  --red:         #C84A3A;
+  --red-light:   #FAE8E6;
+  --bg:          #F6F4EE;
+  --white:       #FFFFFF;
+  --card:        #FAFAF5;
+  --border:      #E0DAD0;
+  --text:        #1A2A1C;
+  --text-mid:    #4A5C4D;
+  --text-muted:  #8A9B8D;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── PAGE ── */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 32px;
+  border-bottom: 2px solid var(--green);
+  margin-bottom: 40px;
+}
+
+.header-left {}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  margin-bottom: 8px;
+}
+
+.header h1 {
+  font-family: 'Lora', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1.1;
+}
+
+.header h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.header-right {
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 2;
+}
+.header-right strong { color: var(--text); font-weight: 500; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-top: 48px;
+}
+.section-label:first-of-type { margin-top: 0; }
+
+.s-dot {
+  width: 8px; height: 8px;
+  background: var(--lime);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.s-title {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.s-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* ── GRID ── */
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.grid-21 { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
+.grid-12 { display: grid; grid-template-columns: 1fr 2fr; gap: 14px; }
+
+/* ── CARD ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  opacity: 0;
+  animation: fadeUp .5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.card-big {
+  font-family: 'Lora', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.card-accent-green { border-top: 3px solid var(--green); }
+.card-accent-lime  { border-top: 3px solid var(--lime); }
+.card-accent-yellow{ border-top: 3px solid var(--yellow); }
+.card-accent-red   { border-top: 3px solid var(--red); }
+
+/* ── FUNNEL ── */
+.funnel-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 80px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.funnel-row:last-child { border-bottom: none; }
+
+.f-label { font-size: 13px; color: var(--text-mid); font-weight: 400; }
+
+.f-track {
+  height: 24px;
+  background: var(--bg);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.f-fill {
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  min-width: 6px;
+  transition: width 1.2s ease;
+}
+
+.f-right { text-align: right; }
+.f-num {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green);
+  display: block;
+  line-height: 1;
+}
+.f-pct { font-size: 11px; color: var(--text-muted); }
+
+/* ── BAR CHART ── */
+.bar-chart { }
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: slideIn .4s ease forwards;
+}
+
+@keyframes slideIn {
+  from { opacity:0; transform:translateX(-10px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+
+.bar-label { font-size: 12px; color: var(--text-mid); min-width: 140px; }
+
+.bar-track {
+  flex: 1;
+  height: 18px;
+  background: var(--bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.bar-num {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  min-width: 42px;
+  text-align: right;
+}
+
+/* ── DONUT ── */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.donut-svg { flex-shrink: 0; }
+
+.donut-legend { flex: 1; }
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--text-mid);
+}
+
+.legend-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-val {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--text);
+  margin-left: auto;
+  font-size: 13px;
+}
+
+/* ── MONTHLY CHART ── */
+.month-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+  padding-top: 16px;
+}
+
+.month-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.month-bars {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+}
+
+.m-bar {
+  width: 10px;
+  border-radius: 3px 3px 0 0;
+  transition: height 1s ease;
+}
+
+.month-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ── TEAM TABLE ── */
+.team-table { width: 100%; border-collapse: collapse; }
+.team-table th {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--border);
+}
+.team-table td {
+  padding: 10px 0;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.team-table tr:last-child td { border-bottom: none; }
+
+.rate-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rate-track {
+  width: 80px; height: 4px;
+  background: var(--bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.rate-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--green-mid);
+}
+
+/* ── INSIGHT ── */
+.insight {
+  background: var(--green-light);
+  border-left: 3px solid var(--green-mid);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+.insight strong { color: var(--green); font-weight: 600; }
+
+/* ── PIPELINE STATUS ── */
+.pipeline-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.pipeline-row:last-child { border-bottom: none; }
+
+.p-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink:0; }
+.p-name { font-size: 13px; color: var(--text); flex: 1; }
+.p-count {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  margin-top: 56px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.footer strong { color: var(--text); font-weight: 500; }
+
+/* animation delays */
+.d1{animation-delay:.05s} .d2{animation-delay:.1s} .d3{animation-delay:.15s}
+.d4{animation-delay:.2s}  .d5{animation-delay:.25s} .d6{animation-delay:.3s}
+.d7{animation-delay:.35s} .d8{animation-delay:.4s}  .d9{animation-delay:.45s}
+.d10{animation-delay:.5s} .d11{animation-delay:.55s} .d12{animation-delay:.6s}
+
+.top-nav {
+  background: var(--white);
+  border-bottom: 2px solid var(--green);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 0;
+}
+.top-nav-logo {
+  font-family: "Lora", serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green);
+  text-decoration: none;
+  padding: 16px 20px 16px 0;
+  border-right: 1px solid var(--border);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.top-nav-logo em { font-style: italic; font-weight: 400; }
+.nav-link {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 18px 12px;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--green); border-bottom-color: var(--lime); }
+.nav-back {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 18px 0;
+}
+.nav-back:hover { color: var(--green); }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+<a href="index.html" class="top-nav-logo">Fresh <em>Ventures</em></a>
+<a href="pipeline.html" class="nav-link" >Pipeline</a>
+<a href="outreach.html" class="nav-link" >Outreach</a>
+<a href="profiles.html" class="nav-link" >Profiles</a>
+<a href="time-to-hire.html" class="nav-link" >Time to Hire</a>
+<a href="ai.html" class="nav-link" style="color:var(--green); font-weight:500; border-bottom-color:var(--lime);">AI Component</a>
+<a href="process.html" class="nav-link" >Process</a>
+<a href="index.html" class="nav-back">← Overview</a>
+</nav>
+<div class="page">
+<!-- ── SECTION 11: AI COMPONENT ANALYSIS ── -->
+<div class="section-label">
+  <div class="s-dot"></div>
+  <div class="s-title">AI Component — What Worked & What Didn't</div>
+  <div class="s-sub">Clay + HeyReach + n8n + ClickUp · end-to-end automation</div>
+</div>
+
+<div class="card d1" style="margin-bottom:14px;">
+  <div class="card-label" style="margin-bottom:20px;">The AI-assisted recruitment flow</div>
+  <div style="display:flex; align-items:stretch; gap:0; overflow-x:auto;">
+
+    <div style="flex:1; min-width:110px; background:var(--green-light); border-radius:10px 0 0 10px; padding:16px 12px; border:1px solid var(--border);">
+      <div style="font-size:10px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">1. Sourcing</div>
+      <div style="font-size:11px; color:var(--text-mid); line-height:1.6;">Clay tables per mission<br>LinkedIn targeting<br>120 invites/day</div>
+    </div>
+    <div style="width:24px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:14px; flex-shrink:0;">→</div>
+    <div style="flex:1; min-width:110px; background:var(--lime-light); border-radius:0; padding:16px 12px; border:1px solid var(--border); border-left:0;">
+      <div style="font-size:10px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">2. Outreach</div>
+      <div style="font-size:11px; color:var(--text-mid); line-height:1.6;">HeyReach sequences<br>5 steps per lead<br>"Entrepreneurial dream?"</div>
+    </div>
+    <div style="width:24px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:14px; flex-shrink:0;">→</div>
+    <div style="flex:1; min-width:110px; background:var(--yellow-light); border-radius:0; padding:16px 12px; border:1px solid var(--border); border-left:0;">
+      <div style="font-size:10px; font-weight:700; color:#B89800; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">3. AI Reply</div>
+      <div style="font-size:11px; color:var(--text-mid); line-height:1.6;">AI summarises reply<br>Categorises (10 types)<br>Drafts response &lt;120w</div>
+    </div>
+    <div style="width:24px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:14px; flex-shrink:0;">→</div>
+    <div style="flex:1; min-width:110px; background:#FEF0ED; border-radius:0; padding:16px 12px; border:1px solid var(--border); border-left:0;">
+      <div style="font-size:10px; font-weight:700; color:var(--red); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">4. Application</div>
+      <div style="font-size:11px; color:var(--text-mid); line-height:1.6;">ClickUp form<br>Typeform + Hireflix<br>n8n automation</div>
+    </div>
+    <div style="width:24px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:14px; flex-shrink:0;">→</div>
+    <div style="flex:1; min-width:110px; background:#F0EEF9; border-radius:0; padding:16px 12px; border:1px solid var(--border); border-left:0;">
+      <div style="font-size:10px; font-weight:700; color:#6B5BD6; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">5. AI Scoring</div>
+      <div style="font-size:11px; color:var(--text-mid); line-height:1.6;">Clay AI scores CV<br>JSON report output<br>→ Ready for Review</div>
+    </div>
+    <div style="width:24px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:14px; flex-shrink:0;">→</div>
+    <div style="flex:1; min-width:110px; background:var(--green-light); border-radius:0 10px 10px 0; padding:16px 12px; border:1px solid var(--border); border-left:0;">
+      <div style="font-size:10px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">6. Review</div>
+      <div style="font-size:11px; color:var(--text-mid); line-height:1.6;">Manual by Fresh team<br>H/M/L tagging<br>Auto-reject on Low</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="grid-2">
+
+  <!-- Left: what worked -->
+  <div class="card d2">
+    <div style="font-size:11px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:16px;">✅ What worked well</div>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="border-left:3px solid var(--green); padding:10px 14px; background:var(--green-light); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:var(--green); margin-bottom:4px;">End-to-end automation</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Clay → HeyReach → ClickUp → n8n is genuinely next-level for a venture studio. Running 20,000+ outreach contacts with a small team would be impossible without it.</div>
+      </div>
+      <div style="border-left:3px solid var(--green-mid); padding:10px 14px; background:var(--green-light); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:var(--green); margin-bottom:4px;">AI reply categorisation at scale</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">5,222 replies categorised with AI across 10 categories. The team (Huub, Bart, Simon, Remi) could focus only on positive replies instead of reading every message. Significant time saving.</div>
+      </div>
+      <div style="border-left:3px solid #8BC49A; padding:10px 14px; background:var(--green-light); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:var(--green); margin-bottom:4px;">Async video interviews (Hireflix)</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Replacing live first-round interviews with Hireflix created massive leverage. Candidates complete on their own time; Fresh team reviews when convenient. Strong quality filter without scheduling overhead.</div>
+      </div>
+      <div style="border-left:3px solid var(--lime); padding:10px 14px; background:var(--green-light); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:var(--green); margin-bottom:4px;">Messaging tone</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">49.7% reply rate and 58.6% positive replies shows the sequence resonated. "No AI recruiter tone" rule clearly worked — messages felt human enough to generate real conversation.</div>
+      </div>
+      <div style="border-left:3px solid var(--yellow); padding:10px 14px; background:var(--yellow-light); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:#B89800; margin-bottom:4px;">Warm campaign targeting</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">LI reactors & event attendees (people who already engaged with Fresh content) produced 3 of the 5 confirmed outreach hires. Warm > cold, every time.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: what didn't work -->
+  <div class="card d3">
+    <div style="font-size:11px; font-weight:700; color:var(--red); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:16px;">⚠️ Shortfalls & risks</div>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="border-left:3px solid var(--red); padding:10px 14px; background:var(--red-light); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:var(--red); margin-bottom:4px;">Reply → Application drop (biggest gap)</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">6,239 replies, only 303 applications — 4.9% conversion. AI-generated follow-ups weren't converting positive conversations into applications. The CTA to "apply" may have felt too big a leap from a LinkedIn DM.</div>
+      </div>
+      <div style="border-left:3px solid #E07060; padding:10px 14px; background:var(--red-light); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:var(--red); margin-bottom:4px;">Application form friction</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Typeform + Hireflix together is a heavy ask. 26% of applicants started the form but never finished. Strong outbound profiles like Humberto Martinez and Noël Magnin dropped here — likely a friction problem, not a motivation problem.</div>
+      </div>
+      <div style="border-left:3px solid #C84A3A; padding:10px 14px; background:var(--red-light); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:var(--red); margin-bottom:4px;">AI categorisation bias risk</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">10-category classification is good but not perfect. Outlier profiles or ambiguous replies may have been misrouted — especially "Polite Decline" (396) and "Unknown" (472) buckets which could contain hidden positives.</div>
+      </div>
+      <div style="border-left:3px solid var(--yellow); padding:10px 14px; background:var(--yellow-light); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:#B89800; margin-bottom:4px;">Too little human touch early in funnel</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">High-potential outbound profiles (Humberto, Noël, Iraz) needed a personalised nudge — not another automated message. A short personal note from Huub or Bart at the right moment could have converted several of these.</div>
+      </div>
+      <div style="border-left:3px solid #B8A898; padding:10px 14px; background:var(--bg); border-radius:0 8px 8px 0;">
+        <div style="font-size:12px; font-weight:600; color:var(--text-mid); margin-bottom:4px;">No cross-mission deduplication</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Deliberate choice, but it means some leads received multiple outreach sequences. Risk of annoying high-value prospects who get contacted twice from different senders.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="insight" style="margin-top:14px;">
+  <strong>Overall verdict:</strong> The AI and automation stack is genuinely impressive for a small team running at this scale — most recruitment agencies don't have anything close to this. The primary opportunity is in the middle of the funnel: converting positive replies into completed applications. A lighter pre-screen step (3 questions max) before the full Typeform/Hireflix flow could meaningfully improve this conversion for the next cohort. Human intervention for the top 10–15% of outbound profiles would also likely add 2–3 additional hires per cohort.
+</div>
+
+</div>
+</body>
+</html>

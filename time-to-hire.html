@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresh Ventures — Time to Hire</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --green:       #2D6B3A;
+  --green-mid:   #4A8F5A;
+  --green-light: #E8F5EC;
+  --lime:        #C8E44A;
+  --lime-light:  #F0F9C8;
+  --yellow:      #E8C83A;
+  --yellow-light:#FDF6D8;
+  --red:         #C84A3A;
+  --red-light:   #FAE8E6;
+  --bg:          #F6F4EE;
+  --white:       #FFFFFF;
+  --card:        #FAFAF5;
+  --border:      #E0DAD0;
+  --text:        #1A2A1C;
+  --text-mid:    #4A5C4D;
+  --text-muted:  #8A9B8D;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── PAGE ── */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 32px;
+  border-bottom: 2px solid var(--green);
+  margin-bottom: 40px;
+}
+
+.header-left {}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  margin-bottom: 8px;
+}
+
+.header h1 {
+  font-family: 'Lora', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1.1;
+}
+
+.header h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.header-right {
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 2;
+}
+.header-right strong { color: var(--text); font-weight: 500; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-top: 48px;
+}
+.section-label:first-of-type { margin-top: 0; }
+
+.s-dot {
+  width: 8px; height: 8px;
+  background: var(--lime);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.s-title {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.s-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* ── GRID ── */
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.grid-21 { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
+.grid-12 { display: grid; grid-template-columns: 1fr 2fr; gap: 14px; }
+
+/* ── CARD ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  opacity: 0;
+  animation: fadeUp .5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.card-big {
+  font-family: 'Lora', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.card-accent-green { border-top: 3px solid var(--green); }
+.card-accent-lime  { border-top: 3px solid var(--lime); }
+.card-accent-yellow{ border-top: 3px solid var(--yellow); }
+.card-accent-red   { border-top: 3px solid var(--red); }
+
+/* ── FUNNEL ── */
+.funnel-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 80px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.funnel-row:last-child { border-bottom: none; }
+
+.f-label { font-size: 13px; color: var(--text-mid); font-weight: 400; }
+
+.f-track {
+  height: 24px;
+  background: var(--bg);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.f-fill {
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  min-width: 6px;
+  transition: width 1.2s ease;
+}
+
+.f-right { text-align: right; }
+.f-num {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green);
+  display: block;
+  line-height: 1;
+}
+.f-pct { font-size: 11px; color: var(--text-muted); }
+
+/* ── BAR CHART ── */
+.bar-chart { }
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: slideIn .4s ease forwards;
+}
+
+@keyframes slideIn {
+  from { opacity:0; transform:translateX(-10px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+
+.bar-label { font-size: 12px; color: var(--text-mid); min-width: 140px; }
+
+.bar-track {
+  flex: 1;
+  height: 18px;
+  background: var(--bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.bar-num {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  min-width: 42px;
+  text-align: right;
+}
+
+/* ── DONUT ── */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.donut-svg { flex-shrink: 0; }
+
+.donut-legend { flex: 1; }
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--text-mid);
+}
+
+.legend-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-val {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--text);
+  margin-left: auto;
+  font-size: 13px;
+}
+
+/* ── MONTHLY CHART ── */
+.month-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+  padding-top: 16px;
+}
+
+.month-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.month-bars {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+}
+
+.m-bar {
+  width: 10px;
+  border-radius: 3px 3px 0 0;
+  transition: height 1s ease;
+}
+
+.month-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ── TEAM TABLE ── */
+.team-table { width: 100%; border-collapse: collapse; }
+.team-table th {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--border);
+}
+.team-table td {
+  padding: 10px 0;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.team-table tr:last-child td { border-bottom: none; }
+
+.rate-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rate-track {
+  width: 80px; height: 4px;
+  background: var(--bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.rate-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--green-mid);
+}
+
+/* ── INSIGHT ── */
+.insight {
+  background: var(--green-light);
+  border-left: 3px solid var(--green-mid);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+.insight strong { color: var(--green); font-weight: 600; }
+
+/* ── PIPELINE STATUS ── */
+.pipeline-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.pipeline-row:last-child { border-bottom: none; }
+
+.p-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink:0; }
+.p-name { font-size: 13px; color: var(--text); flex: 1; }
+.p-count {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  margin-top: 56px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.footer strong { color: var(--text); font-weight: 500; }
+
+/* animation delays */
+.d1{animation-delay:.05s} .d2{animation-delay:.1s} .d3{animation-delay:.15s}
+.d4{animation-delay:.2s}  .d5{animation-delay:.25s} .d6{animation-delay:.3s}
+.d7{animation-delay:.35s} .d8{animation-delay:.4s}  .d9{animation-delay:.45s}
+.d10{animation-delay:.5s} .d11{animation-delay:.55s} .d12{animation-delay:.6s}
+
+.top-nav {
+  background: var(--white);
+  border-bottom: 2px solid var(--green);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 0;
+}
+.top-nav-logo {
+  font-family: "Lora", serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green);
+  text-decoration: none;
+  padding: 16px 20px 16px 0;
+  border-right: 1px solid var(--border);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.top-nav-logo em { font-style: italic; font-weight: 400; }
+.nav-link {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 18px 12px;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--green); border-bottom-color: var(--lime); }
+.nav-back {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 18px 0;
+}
+.nav-back:hover { color: var(--green); }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+<a href="index.html" class="top-nav-logo">Fresh <em>Ventures</em></a>
+<a href="pipeline.html" class="nav-link" >Pipeline</a>
+<a href="outreach.html" class="nav-link" >Outreach</a>
+<a href="profiles.html" class="nav-link" >Profiles</a>
+<a href="time-to-hire.html" class="nav-link" style="color:var(--green); font-weight:500; border-bottom-color:var(--lime);">Time to Hire</a>
+<a href="ai.html" class="nav-link" >AI Component</a>
+<a href="process.html" class="nav-link" >Process</a>
+<a href="index.html" class="nav-back">← Overview</a>
+</nav>
+<div class="page">
+<!-- ── SECTION 9: TIME TO HIRE + DROP REASONS ── -->
+<div class="section-label">
+  <div class="s-dot"></div>
+  <div class="s-title">Time in Process & Drop Reasons</div>
+  <div class="s-sub">Based on ClickUp task data · 45 candidates</div>
+</div>
+
+<div class="grid-3" style="margin-bottom:14px;">
+  <div class="card card-accent-green d1">
+    <div class="card-label">Avg. time to hire</div>
+    <div class="card-big">17</div>
+    <div class="card-sub">days from application to decision</div>
+  </div>
+  <div class="card card-accent-red d2">
+    <div class="card-label">Avg. time before drop</div>
+    <div class="card-big" style="color:var(--red);">27</div>
+    <div class="card-sub">days before candidate dropped out</div>
+  </div>
+  <div class="card card-accent-yellow d3">
+    <div class="card-label">Fastest hire</div>
+    <div class="card-big" style="color:#B89800;">1</div>
+    <div class="card-sub">day · Andrew Valenti</div>
+  </div>
+</div>
+
+<div class="grid-21">
+
+  <!-- Left: time per candidate bars -->
+  <div class="card d4">
+    <div class="card-label" style="margin-bottom:20px;">Days in process per candidate</div>
+
+    <div style="margin-bottom:20px;">
+      <div style="font-size:11px; font-weight:600; color:var(--green); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">✅ Hired</div>
+
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Andrew Valenti</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:1%; height:100%; background:var(--green); border-radius:3px; min-width:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">1d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Sebastian Haas</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:2%; height:100%; background:var(--green); border-radius:3px; min-width:4px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">2d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Pallavi Sharma</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:2%; height:100%; background:var(--green); border-radius:3px; min-width:4px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">2d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Edward Hage</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:5%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">4d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Marieke Renes</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:6%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">5d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Tahir Naqvi</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:6%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">5d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Patricia Rodrigues</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:10%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">8d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Sol Llamedo</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:11%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">9d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Isabel Bjørge</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:11%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">9d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Adish Khezri</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:14%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">11d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Jayshlyn Acevedo</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:16%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">13d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Beatrice Egidi</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:18%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">14d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Robbert-Jan Wijman</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:20%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">16d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Jochem de Boer</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:23%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">18d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Aaditya V.</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:31%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">25d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Ruth Aladjem</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:33%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">26d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Priyanka Vaiude</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:36%; height:100%; background:var(--green); border-radius:3px;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">29d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Liam Finnegan</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:45%; height:100%; background:var(--green); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">36d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Tunca B. Basaran</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:45%; height:100%; background:var(--green); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">36d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Lennart Hoops</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:100%; height:100%; background:var(--green); border-radius:3px; opacity:0.5;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--green); min-width:28px; text-align:right;">80d</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:11px; font-weight:600; color:var(--red); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">❌ Dropped out</div>
+
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Florin Gheorghe</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:1%; height:100%; background:var(--red); border-radius:3px; min-width:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">1d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Alp Giray Savrum</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:6%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">5d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Katerina Joannides</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:8%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">7d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Tijmen Laan</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:8%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">7d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Bart Keijzer</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:8%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">7d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Job van Oossanen</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:9%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">8d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Alexander van Leeuwen</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:14%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">12d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Jeroen Roffel</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:19%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">16d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Gezahagn N.</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:19%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">16d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Nikolai Petrov</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:28%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">24d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Louis Potthoff</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:28%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">24d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Reka Szanto</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:40%; height:100%; background:var(--red); border-radius:3px; opacity:0.7;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">34d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Sophie Mosch</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:58%; height:100%; background:var(--red); border-radius:3px; opacity:0.6;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">49d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Polina Strandstrem</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:77%; height:100%; background:var(--red); border-radius:3px; opacity:0.5;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">65d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Marios Prifti</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:77%; height:100%; background:var(--red); border-radius:3px; opacity:0.5;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">65d</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <div style="font-size:11px; color:var(--text-mid); min-width:130px;">Boaz Chemtob</div>
+        <div style="flex:1; height:14px; background:var(--bg); border-radius:3px; overflow:hidden;"><div style="width:100%; height:100%; background:var(--red); border-radius:3px; opacity:0.5;"></div></div>
+        <div style="font-size:11px; font-weight:600; color:var(--red); min-width:28px; text-align:right;">85d</div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- Right: drop reasons + hires per month -->
+  <div style="display:flex; flex-direction:column; gap:14px;">
+
+    <div class="card d5">
+      <div class="card-label" style="margin-bottom:16px;">Why did candidates drop out?</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:8px; height:8px; background:var(--red); border-radius:50%; flex-shrink:0;"></div>
+          <div style="flex:1; font-size:12px; color:var(--text-mid);">Unresponsive / no reason given</div>
+          <div style="font-family:'Lora',serif; font-weight:700; color:var(--red);">7</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:8px; height:8px; background:#E07060; border-radius:50%; flex-shrink:0;"></div>
+          <div style="flex:1; font-size:12px; color:var(--text-mid);">Not right fit / misunderstood program</div>
+          <div style="font-family:'Lora',serif; font-weight:700; color:#E07060;">3</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:8px; height:8px; background:var(--yellow); border-radius:50%; flex-shrink:0;"></div>
+          <div style="flex:1; font-size:12px; color:var(--text-mid);">Competing opportunity / other job</div>
+          <div style="font-family:'Lora',serif; font-weight:700; color:#B89800;">2</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:8px; height:8px; background:var(--yellow); border-radius:50%; flex-shrink:0;"></div>
+          <div style="flex:1; font-size:12px; color:var(--text-mid);">Capacity — can't do full-time / too intensive</div>
+          <div style="font-family:'Lora',serif; font-weight:700; color:#B89800;">2</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:8px; height:8px; background:#8BC49A; border-radius:50%; flex-shrink:0;"></div>
+          <div style="flex:1; font-size:12px; color:var(--text-mid);">Dropped after interview stage</div>
+          <div style="font-family:'Lora',serif; font-weight:700; color:var(--green-mid);">2</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:8px; height:8px; background:#C8A820; border-radius:50%; flex-shrink:0;"></div>
+          <div style="flex:1; font-size:12px; color:var(--text-mid);">Still on the fence about entrepreneurship</div>
+          <div style="font-family:'Lora',serif; font-weight:700; color:#C8A820;">1</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:8px; height:8px; background:#B8A898; border-radius:50%; flex-shrink:0;"></div>
+          <div style="flex:1; font-size:12px; color:var(--text-mid);">Process friction (refused video interview)</div>
+          <div style="font-family:'Lora',serif; font-weight:700; color:var(--text-muted);">1</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:8px; height:8px; background:#D8D0C8; border-radius:50%; flex-shrink:0;"></div>
+          <div style="flex:1; font-size:12px; color:var(--text-mid);">Other / unclear</div>
+          <div style="font-family:'Lora',serif; font-weight:700; color:var(--text-muted);">2</div>
+        </div>
+      </div>
+      <div class="insight" style="margin-top:16px;">
+        <strong>Key finding:</strong> 7 of 20 dropouts gave no reason. A simple exit survey or a quick call at the point of drop would surface valuable data for future cohorts. Misunderstanding of the program (co-founding vs hiring) is also a recurring theme — worth addressing earlier in the funnel.
+      </div>
+    </div>
+
+    <div class="card d6">
+      <div class="card-label" style="margin-bottom:16px;">Hires by application month</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label">Sep '25</div><div class="bar-track"><div class="bar-fill" style="width:33%; background:var(--green);"></div></div><div class="bar-num">3</div></div>
+        <div class="bar-row"><div class="bar-label">Oct '25</div><div class="bar-track"><div class="bar-fill" style="width:44%; background:var(--green);"></div></div><div class="bar-num">4</div></div>
+        <div class="bar-row"><div class="bar-label">Nov '25</div><div class="bar-track"><div class="bar-fill" style="width:33%; background:var(--green);"></div></div><div class="bar-num">3</div></div>
+        <div class="bar-row"><div class="bar-label">Dec '25</div><div class="bar-track"><div class="bar-fill" style="width:33%; background:var(--green);"></div></div><div class="bar-num">3</div></div>
+        <div class="bar-row"><div class="bar-label">Jan '26</div><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div><div class="bar-num">9</div></div>
+        <div class="bar-row"><div class="bar-label">Feb '26</div><div class="bar-track"><div class="bar-fill" style="width:22%; background:var(--green);"></div></div><div class="bar-num">2</div></div>
+        <div class="bar-row"><div class="bar-label">Mar '26</div><div class="bar-track"><div class="bar-fill" style="width:11%; background:var(--green);"></div></div><div class="bar-num">1</div></div>
+      </div>
+      <div class="insight" style="margin-top:12px;">
+        <strong>January peak:</strong> 9 of 25 hires applied in January — coinciding with the highest outreach volume and reply rates. Early applicants (Sep–Oct) also converted well, suggesting both warm early-adopters and the January push were effective.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</body>
+</html>

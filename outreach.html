@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresh Ventures — Outreach</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+
+:root {
+  --green:       #2D6B3A;
+  --green-mid:   #4A8F5A;
+  --green-light: #E8F5EC;
+  --lime:        #C8E44A;
+  --lime-light:  #F0F9C8;
+  --yellow:      #E8C83A;
+  --yellow-light:#FDF6D8;
+  --red:         #C84A3A;
+  --red-light:   #FAE8E6;
+  --bg:          #F6F4EE;
+  --white:       #FFFFFF;
+  --card:        #FAFAF5;
+  --border:      #E0DAD0;
+  --text:        #1A2A1C;
+  --text-mid:    #4A5C4D;
+  --text-muted:  #8A9B8D;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── PAGE ── */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 32px;
+  border-bottom: 2px solid var(--green);
+  margin-bottom: 40px;
+}
+
+.header-left {}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  margin-bottom: 8px;
+}
+
+.header h1 {
+  font-family: 'Lora', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1.1;
+}
+
+.header h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.header-right {
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 2;
+}
+.header-right strong { color: var(--text); font-weight: 500; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-top: 48px;
+}
+.section-label:first-of-type { margin-top: 0; }
+
+.s-dot {
+  width: 8px; height: 8px;
+  background: var(--lime);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.s-title {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.s-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* ── GRID ── */
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.grid-21 { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
+.grid-12 { display: grid; grid-template-columns: 1fr 2fr; gap: 14px; }
+
+/* ── CARD ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  opacity: 0;
+  animation: fadeUp .5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.card-big {
+  font-family: 'Lora', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.card-accent-green { border-top: 3px solid var(--green); }
+.card-accent-lime  { border-top: 3px solid var(--lime); }
+.card-accent-yellow{ border-top: 3px solid var(--yellow); }
+.card-accent-red   { border-top: 3px solid var(--red); }
+
+/* ── FUNNEL ── */
+.funnel-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 80px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.funnel-row:last-child { border-bottom: none; }
+
+.f-label { font-size: 13px; color: var(--text-mid); font-weight: 400; }
+
+.f-track {
+  height: 24px;
+  background: var(--bg);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.f-fill {
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  min-width: 6px;
+  transition: width 1.2s ease;
+}
+
+.f-right { text-align: right; }
+.f-num {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green);
+  display: block;
+  line-height: 1;
+}
+.f-pct { font-size: 11px; color: var(--text-muted); }
+
+/* ── BAR CHART ── */
+.bar-chart { }
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: slideIn .4s ease forwards;
+}
+
+@keyframes slideIn {
+  from { opacity:0; transform:translateX(-10px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+
+.bar-label { font-size: 12px; color: var(--text-mid); min-width: 140px; }
+
+.bar-track {
+  flex: 1;
+  height: 18px;
+  background: var(--bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.bar-num {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  min-width: 42px;
+  text-align: right;
+}
+
+/* ── DONUT ── */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.donut-svg { flex-shrink: 0; }
+
+.donut-legend { flex: 1; }
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--text-mid);
+}
+
+.legend-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-val {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--text);
+  margin-left: auto;
+  font-size: 13px;
+}
+
+/* ── MONTHLY CHART ── */
+.month-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+  padding-top: 16px;
+}
+
+.month-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.month-bars {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+}
+
+.m-bar {
+  width: 10px;
+  border-radius: 3px 3px 0 0;
+  transition: height 1s ease;
+}
+
+.month-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ── TEAM TABLE ── */
+.team-table { width: 100%; border-collapse: collapse; }
+.team-table th {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--border);
+}
+.team-table td {
+  padding: 10px 0;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.team-table tr:last-child td { border-bottom: none; }
+
+.rate-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rate-track {
+  width: 80px; height: 4px;
+  background: var(--bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.rate-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--green-mid);
+}
+
+/* ── INSIGHT ── */
+.insight {
+  background: var(--green-light);
+  border-left: 3px solid var(--green-mid);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+.insight strong { color: var(--green); font-weight: 600; }
+
+/* ── PIPELINE STATUS ── */
+.pipeline-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.pipeline-row:last-child { border-bottom: none; }
+
+.p-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink:0; }
+.p-name { font-size: 13px; color: var(--text); flex: 1; }
+.p-count {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  margin-top: 56px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.footer strong { color: var(--text); font-weight: 500; }
+
+/* animation delays */
+.d1{animation-delay:.05s} .d2{animation-delay:.1s} .d3{animation-delay:.15s}
+.d4{animation-delay:.2s}  .d5{animation-delay:.25s} .d6{animation-delay:.3s}
+.d7{animation-delay:.35s} .d8{animation-delay:.4s}  .d9{animation-delay:.45s}
+.d10{animation-delay:.5s} .d11{animation-delay:.55s} .d12{animation-delay:.6s}
+
+.top-nav {
+  background: var(--white);
+  border-bottom: 2px solid var(--green);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 0;
+}
+.top-nav-logo {
+  font-family: "Lora", serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green);
+  text-decoration: none;
+  padding: 16px 20px 16px 0;
+  border-right: 1px solid var(--border);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.top-nav-logo em { font-style: italic; font-weight: 400; }
+.nav-link {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 18px 12px;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--green); border-bottom-color: var(--lime); }
+.nav-back {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 18px 0;
+}
+.nav-back:hover { color: var(--green); }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+<a href="index.html" class="top-nav-logo">Fresh <em>Ventures</em></a>
+<a href="pipeline.html" class="nav-link" >Pipeline</a>
+<a href="outreach.html" class="nav-link" style="color:var(--green); font-weight:500; border-bottom-color:var(--lime);">Outreach</a>
+<a href="profiles.html" class="nav-link" >Profiles</a>
+<a href="time-to-hire.html" class="nav-link" >Time to Hire</a>
+<a href="ai.html" class="nav-link" >AI Component</a>
+<a href="process.html" class="nav-link" >Process</a>
+<a href="index.html" class="nav-back">← Overview</a>
+</nav>
+<div class="page">
+<!-- ── SECTION 2: OUTREACH FUNNEL ── -->
+<div class="section-label">
+  <div class="s-dot"></div>
+  <div class="s-title">Full Outreach Funnel</div>
+  <div class="s-sub">HeyReach + ClickUp combined</div>
+</div>
+
+<div class="card d5">
+  <div class="funnel-row">
+    <div class="f-label">Invites Sent</div>
+    <div class="f-track">
+      <div class="f-fill" style="width:100%; background:var(--green);">20,732 profiles</div>
+    </div>
+    <div class="f-right"><span class="f-num">20,732</span><span class="f-pct">100%</span></div>
+  </div>
+  <div class="funnel-row">
+    <div class="f-label">Connections Accepted</div>
+    <div class="f-track">
+      <div class="f-fill" style="width:40.6%; background:var(--green-mid);">8,418</div>
+    </div>
+    <div class="f-right"><span class="f-num">8,418</span><span class="f-pct">40.6%</span></div>
+  </div>
+  <div class="funnel-row">
+    <div class="f-label">Messages Sent</div>
+    <div class="f-track">
+      <div class="f-fill" style="width:60.6%; background:#5BAA6E;">12,560</div>
+    </div>
+    <div class="f-right"><span class="f-num">12,560</span><span class="f-pct">of accepted</span></div>
+  </div>
+  <div class="funnel-row">
+    <div class="f-label">Replies Received</div>
+    <div class="f-track">
+      <div class="f-fill" style="width:30.1%; background:#8BC49A;">6,239</div>
+    </div>
+    <div class="f-right"><span class="f-num">6,239</span><span class="f-pct">49.7% reply rate</span></div>
+  </div>
+  <div class="funnel-row">
+    <div class="f-label">Positive Replies</div>
+    <div class="f-track">
+      <div class="f-fill" style="width:16.1%; background:var(--yellow);">3,333</div>
+    </div>
+    <div class="f-right"><span class="f-num">3,333</span><span class="f-pct">58.6% of replies</span></div>
+  </div>
+  <div class="funnel-row">
+    <div class="f-label">Applications (Signed Up)</div>
+    <div class="f-track">
+      <div class="f-fill" style="width:1.46%; background:#C84A3A; min-width:6px;">&nbsp;</div>
+    </div>
+    <div class="f-right"><span class="f-num">303</span><span class="f-pct">1.46% of sent</span></div>
+  </div>
+  <div class="funnel-row">
+    <div class="f-label">Hired</div>
+    <div class="f-track">
+      <div class="f-fill" style="width:0.12%; background:#8A2020; min-width:6px;">&nbsp;</div>
+    </div>
+    <div class="f-right"><span class="f-num">25</span><span class="f-pct">8.3% of applicants</span></div>
+  </div>
+
+  <div class="insight">
+    <strong>Key numbers:</strong> 40.6% connection acceptance rate and 49.7% reply rate are both strong for LinkedIn outreach. The biggest drop is between replies (6,239) and applications (303) — only 4.9% of people who replied ended up applying. This is the gap worth optimizing: better follow-up sequences or a lower-friction application entry point could meaningfully move the needle.
+  </div>
+</div>
+
+<!-- ── SECTION 3: MONTHLY ACTIVITY ── -->
+<div class="section-label">
+  <div class="s-dot"></div>
+  <div class="s-title">Monthly Outreach Activity</div>
+  <div class="s-sub">Aug 2025 – Mar 2026</div>
+</div>
+
+<div class="card d6">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+    <div>
+      <div class="card-label" style="margin-bottom:16px;">Connections Sent vs Accepted</div>
+      <canvas id="chartConnections" height="220"></canvas>
+    </div>
+    <div>
+      <div class="card-label" style="margin-bottom:16px;">Messages Sent vs Replies</div>
+      <canvas id="chartMessages" height="220"></canvas>
+    </div>
+  </div>
+  <div class="insight" style="margin-top:24px;">
+    <strong>Trend:</strong> Outreach volume peaked in Nov '25 (3,880 invites) but acceptance and reply quality kept improving through Jan–Feb '26 — suggesting the messaging and targeting got sharper over time. Jan '26 was the standout month: 1,806 accepts and 1,785 replies. March is partial (campaign still running).
+  </div>
+</div>
+
+<script>
+const months = ["Aug '25","Sep '25","Oct '25","Nov '25","Dec '25","Jan '26","Feb '26","Mar '26"];
+
+// Chart 1: Connections
+new Chart(document.getElementById('chartConnections'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [
+      {
+        label: 'Sent',
+        data: [350, 1528, 3368, 3880, 3078, 3106, 3111, 2311],
+        backgroundColor: '#2D6B3A',
+        borderRadius: 4,
+        barPercentage: 0.7,
+      },
+      {
+        label: 'Accepted',
+        data: [89, 484, 1051, 1006, 1213, 1806, 1742, 1027],
+        backgroundColor: '#C8E44A',
+        borderRadius: 4,
+        barPercentage: 0.7,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { family: 'DM Sans', size: 11 }, boxWidth: 12, padding: 16 } }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { family: 'DM Sans', size: 11 }, color: '#8A9B8D' } },
+      y: { grid: { color: '#E0DAD0' }, ticks: { font: { family: 'DM Sans', size: 11 }, color: '#8A9B8D' } }
+    }
+  }
+});
+
+// Chart 2: Messages vs Replies
+new Chart(document.getElementById('chartMessages'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [
+      {
+        label: 'Messages Sent',
+        data: [90, 1155, 1311, 1277, 1208, 3390, 2632, 1497],
+        backgroundColor: '#4A8F5A',
+        borderRadius: 4,
+        barPercentage: 0.7,
+      },
+      {
+        label: 'Replies',
+        data: [20, 307, 521, 503, 565, 1785, 1683, 855],
+        backgroundColor: '#E8C83A',
+        borderRadius: 4,
+        barPercentage: 0.7,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { family: 'DM Sans', size: 11 }, boxWidth: 12, padding: 16 } }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { family: 'DM Sans', size: 11 }, color: '#8A9B8D' } },
+      y: { grid: { color: '#E0DAD0' }, ticks: { font: { family: 'DM Sans', size: 11 }, color: '#8A9B8D' } }
+    }
+  }
+});
+</script>
+
+<!-- ── SECTION 4: REPLY QUALITY ── -->
+<div class="section-label">
+  <div class="s-dot"></div>
+  <div class="s-title">Reply Quality Analysis</div>
+  <div class="s-sub">5,684 replies categorized</div>
+</div>
+
+<div class="grid-21">
+
+  <!-- Breakdown bars -->
+  <div class="card d7">
+    <div class="card-label" style="margin-bottom:20px;">Reply Categories</div>
+    <div class="bar-chart">
+      <div class="bar-row" style="animation-delay:.05s">
+        <div class="bar-label" style="min-width:180px;">Positive – Interested</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div>
+        <div class="bar-num">1,383</div>
+      </div>
+      <div class="bar-row" style="animation-delay:.1s">
+        <div class="bar-label" style="min-width:180px;">Positive – Needs Info</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green-mid);"></div></div>
+        <div class="bar-num">1,950</div>
+      </div>
+      <div class="bar-row" style="animation-delay:.15s">
+        <div class="bar-label" style="min-width:180px;">Not Interested</div>
+        <div class="bar-track"><div class="bar-fill" style="width:73%; background:var(--red);"></div></div>
+        <div class="bar-num">1,012</div>
+      </div>
+      <div class="bar-row" style="animation-delay:.2s">
+        <div class="bar-label" style="min-width:180px;">Polite Decline</div>
+        <div class="bar-track"><div class="bar-fill" style="width:29%; background:#E07860;"></div></div>
+        <div class="bar-num">396</div>
+      </div>
+      <div class="bar-row" style="animation-delay:.25s">
+        <div class="bar-label" style="min-width:180px;">Already Engaged Elsewhere</div>
+        <div class="bar-track"><div class="bar-fill" style="width:13%; background:#C87060;"></div></div>
+        <div class="bar-num">175</div>
+      </div>
+      <div class="bar-row" style="animation-delay:.3s">
+        <div class="bar-label" style="min-width:180px;">Referral / Redirect</div>
+        <div class="bar-track"><div class="bar-fill" style="width:6.5%; background:var(--yellow);"></div></div>
+        <div class="bar-num">90</div>
+      </div>
+      <div class="bar-row" style="animation-delay:.35s">
+        <div class="bar-label" style="min-width:180px;">Partnership Inquiry</div>
+        <div class="bar-track"><div class="bar-fill" style="width:6%; background:var(--lime);"></div></div>
+        <div class="bar-num">83</div>
+      </div>
+      <div class="bar-row" style="animation-delay:.4s">
+        <div class="bar-label" style="min-width:180px;">Too Early Stage</div>
+        <div class="bar-track"><div class="bar-fill" style="width:3.8%; background:#C8A820;"></div></div>
+        <div class="bar-num">52</div>
+      </div>
+      <div class="bar-row" style="animation-delay:.45s">
+        <div class="bar-label" style="min-width:180px;">Out of Scope</div>
+        <div class="bar-track"><div class="bar-fill" style="width:3.8%; background:#B8A898;"></div></div>
+        <div class="bar-num">52</div>
+      </div>
+      <div class="bar-row" style="animation-delay:.5s">
+        <div class="bar-label" style="min-width:180px;">Unknown / Unclear</div>
+        <div class="bar-track"><div class="bar-fill" style="width:34%; background:#D8D0C8;"></div></div>
+        <div class="bar-num">472</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: summary cards -->
+  <div style="display:flex; flex-direction:column; gap:14px;">
+    <div class="card card-accent-green d8" style="flex:1;">
+      <div class="card-label">Positive replies</div>
+      <div class="card-big">58.6%</div>
+      <div class="card-sub">3,333 of 5,684 replies</div>
+    </div>
+    <div class="card card-accent-red d9" style="flex:1;">
+      <div class="card-label">Negative replies</div>
+      <div class="card-big" style="color:var(--red);">20.9%</div>
+      <div class="card-sub">1,187 of 5,684 replies</div>
+    </div>
+    <div class="card card-accent-yellow d10" style="flex:1;">
+      <div class="card-label">Wouter approved</div>
+      <div class="card-big" style="color:#B89800;">795</div>
+      <div class="card-sub">23.8% of positive replies</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 5: TEAM PERFORMANCE ── -->
+<div class="section-label">
+  <div class="s-dot"></div>
+  <div class="s-title">Team Review Performance</div>
+  <div class="s-sub">Positive / negative labels per reviewer</div>
+</div>
+
+<div class="card d11">
+  <table class="team-table">
+    <thead>
+      <tr>
+        <th style="width:120px;">Reviewer</th>
+        <th>Positives</th>
+        <th>Negatives</th>
+        <th>Total reviewed</th>
+        <th>Positive rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Simon</strong></td>
+        <td style="color:var(--green); font-weight:500;">1,135</td>
+        <td style="color:var(--red);">335</td>
+        <td>1,470</td>
+        <td>
+          <div class="rate-bar">
+            <div class="rate-track"><div class="rate-fill" style="width:77%;"></div></div>
+            <span style="font-size:12px; color:var(--text-mid);">77%</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Huub</strong></td>
+        <td style="color:var(--green); font-weight:500;">1,009</td>
+        <td style="color:var(--red);">321</td>
+        <td>1,330</td>
+        <td>
+          <div class="rate-bar">
+            <div class="rate-track"><div class="rate-fill" style="width:76%;"></div></div>
+            <span style="font-size:12px; color:var(--text-mid);">76%</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Bart</strong></td>
+        <td style="color:var(--green); font-weight:500;">841</td>
+        <td style="color:var(--red);">345</td>
+        <td>1,186</td>
+        <td>
+          <div class="rate-bar">
+            <div class="rate-track"><div class="rate-fill" style="width:71%;"></div></div>
+            <span style="font-size:12px; color:var(--text-mid);">71%</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Remi</strong></td>
+        <td style="color:var(--green); font-weight:500;">543</td>
+        <td style="color:var(--red);">251</td>
+        <td>794</td>
+        <td>
+          <div class="rate-bar">
+            <div class="rate-track"><div class="rate-fill" style="width:68%;"></div></div>
+            <span style="font-size:12px; color:var(--text-mid);">68%</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Brad</strong></td>
+        <td style="color:var(--green); font-weight:500;">139</td>
+        <td style="color:var(--red);">49</td>
+        <td>188</td>
+        <td>
+          <div class="rate-bar">
+            <div class="rate-track"><div class="rate-fill" style="width:74%;"></div></div>
+            <span style="font-size:12px; color:var(--text-mid);">74%</span>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Note:</strong> Simon and Huub reviewed the highest volume. Bart has the most selective positive rate (71%), which may reflect stricter criteria or a different candidate pool. Brad joined later in the process, hence the lower total volume.
+  </div>
+</div>
+
+<!-- ── SECTION 6: TOP CAMPAIGNS ── -->
+<div class="section-label">
+  <div class="s-dot"></div>
+  <div class="s-title">Top Campaigns by Volume</div>
+  <div class="s-sub">Source campaigns only (excl. reply-handling campaigns)</div>
+</div>
+
+<div class="card d12">
+  <div class="bar-chart">
+    <div class="bar-row" style="animation-delay:.05s">
+      <div class="bar-label" style="min-width:230px;">LI reactors & event attendees</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div>
+      <div class="bar-num">2,978</div>
+    </div>
+    <div class="bar-row" style="animation-delay:.1s">
+      <div class="bar-label" style="min-width:230px;">Innovation in Farming & Food</div>
+      <div class="bar-track"><div class="bar-fill" style="width:9.6%; background:var(--green-mid);"></div></div>
+      <div class="bar-num">286</div>
+    </div>
+    <div class="bar-row" style="animation-delay:.15s">
+      <div class="bar-label" style="min-width:230px;">Founders in Farming & Food</div>
+      <div class="bar-track"><div class="bar-fill" style="width:6.4%; background:var(--green-mid);"></div></div>
+      <div class="bar-num">190</div>
+    </div>
+    <div class="bar-row" style="animation-delay:.2s">
+      <div class="bar-label" style="min-width:230px;">BD & Sales in Farming & Food</div>
+      <div class="bar-track"><div class="bar-fill" style="width:3.1%; background:#8BC49A;"></div></div>
+      <div class="bar-num">92</div>
+    </div>
+    <div class="bar-row" style="animation-delay:.25s">
+      <div class="bar-label" style="min-width:230px;">Mission 20: Data Platforms</div>
+      <div class="bar-track"><div class="bar-fill" style="width:2.8%; background:var(--yellow);"></div></div>
+      <div class="bar-num">82</div>
+    </div>
+    <div class="bar-row" style="animation-delay:.3s">
+      <div class="bar-label" style="min-width:230px;">Huub event push</div>
+      <div class="bar-track"><div class="bar-fill" style="width:1.7%; background:var(--lime);"></div></div>
+      <div class="bar-num">51</div>
+    </div>
+    <div class="bar-row" style="animation-delay:.35s">
+      <div class="bar-label" style="min-width:230px;">Mission 28: Precision Fermentation</div>
+      <div class="bar-track"><div class="bar-fill" style="width:1.7%; background:var(--lime);"></div></div>
+      <div class="bar-num">50</div>
+    </div>
+    <div class="bar-row" style="animation-delay:.4s">
+      <div class="bar-label" style="min-width:230px;">Previous Program ENG (Bart)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:1.6%; background:#C8A820;"></div></div>
+      <div class="bar-num">48</div>
+    </div>
+    <div class="bar-row" style="animation-delay:.45s">
+      <div class="bar-label" style="min-width:230px;">Previous Programme ENG (Huub)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:1.5%; background:#C8A820;"></div></div>
+      <div class="bar-num">46</div>
+    </div>
+  </div>
+  <div class="insight">
+    <strong>Standout:</strong> "LI reactors & event attendees" (2,978 replies) massively outperforms every other campaign — likely because these are warm leads who already engaged with Fresh content. This warm retargeting approach is clearly the highest-leverage tactic and worth scaling further in the next cohort.
+  </div>
+</div>
+
+</div>
+</body>
+</html>
