@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresh Ventures — Recruitment Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:#2D6B3A;--green-mid:#4A8F5A;--green-light:#E8F5EC;
+    --lime:#C8E44A;--yellow:#E8C83A;--yellow-light:#FDF6D8;
+    --red:#C84A3A;--red-light:#FAE8E6;
+    --bg:#F6F4EE;--white:#FFFFFF;--border:#E0DAD0;
+    --text:#1A2A1C;--text-mid:#4A5C4D;--text-muted:#8A9B8D;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;padding:40px;max-width:1100px;margin:0 auto;}
+  .header{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px 32px;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+  .header h1{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--green);margin-bottom:6px;}
+  .header h1 em{font-style:italic;font-weight:400;}
+  .header-sub{font-size:13px;color:var(--text-muted);}
+  .header-meta{text-align:right;font-size:12px;color:var(--text-muted);line-height:2;}
+  .header-badge{display:inline-block;background:var(--green-light);color:var(--green);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:6px;}
+  .overview-banner{background:var(--green);border-radius:14px;padding:22px 32px;display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;text-decoration:none;transition:background 0.2s;}
+  .overview-banner:hover{background:var(--green-mid);}
+  .banner-left{display:flex;align-items:center;gap:14px;}
+  .banner-icon{width:36px;height:36px;background:rgba(255,255,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .banner-title{font-family:'Lora',serif;font-size:17px;font-weight:600;color:var(--white);}
+  .banner-sub{font-size:12px;color:rgba(255,255,255,0.65);margin-top:2px;}
+  .banner-link{font-size:13px;color:rgba(255,255,255,0.8);font-weight:500;}
+  .section-heading{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;margin-top:32px;}
+  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .dash-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 22px 18px;text-decoration:none;display:block;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;}
+  .dash-card:hover{border-color:var(--green-mid);transform:translateY(-2px);box-shadow:0 4px 16px rgba(45,107,58,0.08);}
+  .card-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .card-avatar{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .card-title{font-family:'Lora',serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px;}
+  .card-subtitle{font-size:11px;color:var(--text-muted);}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+  .tag{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap;}
+  .tag-green{background:var(--green-light);color:var(--green);}
+  .tag-lime{background:#F0F9C8;color:#4A6A00;}
+  .tag-yellow{background:var(--yellow-light);color:#8A6800;}
+  .tag-red{background:var(--red-light);color:var(--red);}
+  .tag-grey{background:#F0EDE8;color:var(--text-muted);}
+  .tag-blue{background:#EEF4FB;color:#2A5A8A;}
+  .open-link{font-size:13px;font-weight:500;color:var(--green);}
+  .dash-card:hover .open-link{text-decoration:underline;}
+  .footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);}
+  .footer strong{color:var(--text);font-weight:500;}
+  @media(max-width:700px){body{padding:20px;}.card-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Fresh Ventures <em>Studio</em></h1>
+    <div class="header-sub">Co-founder | Venture Building Program · Does Recruitment · Wouter Jaarsma</div>
+  </div>
+  <div class="header-meta">
+    <div class="header-badge">Aug 2025 – Mar 2026</div><br>
+    wouter@doesrecruitment.com
+  </div>
+</div>
+
+<a href="pipeline.html" class="overview-banner">
+  <div class="banner-left">
+    <div class="banner-icon">🌱</div>
+    <div>
+      <div class="banner-title">Total Overview — Co-founder Program</div>
+      <div class="banner-sub">20,732 outreach · 303 applications · 25 hired · 17 avg days to hire · 5 confirmed via outreach</div>
+    </div>
+  </div>
+  <div class="banner-link">View →</div>
+</a>
+
+<div class="section-heading">Recruitment Dashboards</div>
+
+<div class="card-grid">
+
+  <a href="pipeline.html" class="dash-card">
+    <div class="card-top">
+      <div class="card-avatar" style="background:#E8F5EC;color:#2D6B3A;">PL</div>
+      <div>
+        <div class="card-title">Pipeline</div>
+        <div class="card-subtitle">Live status · ClickUp</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag tag-green">25 hired</span>
+      <span class="tag tag-lime">2 offered</span>
+      <span class="tag tag-yellow">303 signed up</span>
+      <span class="tag tag-red">9 offer declined</span>
+    </div>
+    <div class="open-link">Open dashboard →</div>
+  </a>
+
+  <a href="outreach.html" class="dash-card">
+    <div class="card-top">
+      <div class="card-avatar" style="background:#F0F9C8;color:#4A6A00;">OR</div>
+      <div>
+        <div class="card-title">Outreach</div>
+        <div class="card-subtitle">HeyReach · 4 campaigns</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag tag-green">20,732 sent</span>
+      <span class="tag tag-lime">40.6% accepted</span>
+      <span class="tag tag-yellow">58.6% positive</span>
+    </div>
+    <div class="open-link">Open dashboard →</div>
+  </a>
+
+  <a href="profiles.html" class="dash-card">
+    <div class="card-top">
+      <div class="card-avatar" style="background:#EEF4FB;color:#2A5A8A;">PR</div>
+      <div>
+        <div class="card-title">Candidate Profiles</div>
+        <div class="card-subtitle">CV analysis · 50+ candidates</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag tag-blue">88% Masters+</span>
+      <span class="tag tag-green">10/25 founding exp</span>
+      <span class="tag tag-grey">100% senior</span>
+    </div>
+    <div class="open-link">Open dashboard →</div>
+  </a>
+
+  <a href="time-to-hire.html" class="dash-card">
+    <div class="card-top">
+      <div class="card-avatar" style="background:#FDF6D8;color:#8A6800;">TH</div>
+      <div>
+        <div class="card-title">Time to Hire</div>
+        <div class="card-subtitle">Drop reasons · ClickUp data</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag tag-green">17 avg days hired</span>
+      <span class="tag tag-red">27 avg days dropped</span>
+      <span class="tag tag-yellow">7 unresponsive</span>
+    </div>
+    <div class="open-link">Open dashboard →</div>
+  </a>
+
+  <a href="process.html" class="dash-card">
+    <div class="card-top">
+      <div class="card-avatar" style="background:#F0EDE8;color:#6A5A4A;">PF</div>
+      <div>
+        <div class="card-title">Process Funnel</div>
+        <div class="card-subtitle">Drop-off per stage</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag tag-red">48% drop at typeform</span>
+      <span class="tag tag-yellow">57% drop at video</span>
+      <span class="tag tag-green">69% offer accepted</span>
+    </div>
+    <div class="open-link">Open dashboard →</div>
+  </a>
+
+  <a href="ai.html" class="dash-card">
+    <div class="card-top">
+      <div class="card-avatar" style="background:#F0EEF9;color:#5A4AB8;">AI</div>
+      <div>
+        <div class="card-title">AI Component</div>
+        <div class="card-subtitle">Clay · HeyReach · n8n</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag tag-green">5,200+ replies categorised</span>
+      <span class="tag tag-red">4.9% reply→apply</span>
+    </div>
+    <div class="open-link">Open dashboard →</div>
+  </a>
+
+</div>
+
+
+
+<div class="section-heading" style="margin-top:32px;">Recommendations</div>
+
+<a href="recommendations.html" class="dash-card" style="display:flex; align-items:center; justify-content:space-between; padding:22px 28px;">
+  <div style="display:flex; align-items:center; gap:14px;">
+    <div class="card-avatar" style="background:#E8F5EC;color:#2D6B3A;font-size:18px;width:44px;height:44px;">💡</div>
+    <div>
+      <div class="card-title" style="font-size:16px;">Key Recommendations — 2026 Cohort</div>
+      <div class="card-subtitle" style="margin-top:3px;">10 actionable recommendations across funnel, outreach, AI & offer stage</div>
+      <div class="tags" style="margin-top:10px;margin-bottom:0;">
+        <span class="tag tag-red">3 high impact · funnel</span>
+        <span class="tag tag-green">3 high impact · outreach</span>
+        <span class="tag tag-yellow">3 medium impact · AI</span>
+        <span class="tag tag-lime">1 offer stage</span>
+      </div>
+    </div>
+  </div>
+  <div class="open-link" style="white-space:nowrap;margin-left:24px;">Open report →</div>
+</a>
+
+<div class="footer">
+  <div>Prepared by <strong>Wouter Jaarsma</strong> · Does Recruitment OÜ · March 2026</div>
+  <div><a href="https://freshventures.eu" target="_blank" style="color:var(--green-mid);text-decoration:none;">freshventures.eu</a></div>
+</div>
+
+</body>
+</html>
